@@ -11,6 +11,8 @@
         starry background -->
     <!-- <script src="https://unpkg.com/aframe-star-system-component@1.0.0/index.js"></script> -->
     <script src="https://unpkg.com/aframe-star-system-component@1.0.0/index.js"></script>
+    <script src="https://unpkg.com/aframe-sharedspace-component@1.0.1/dist/aframe-sharedspace-component.min.js"></script>
+
   </head>
 
   <body>
@@ -113,8 +115,9 @@
       <a-entity position="-5 5 20" rotation="-13 0 0">
         <a-entity camera look-controls wasd-controls></a-entity>
       </a-entity>
-
+      
       <a-sky color="#F3ECE7"></a-sky>
+      
 
       <!-- We can use our star system component here to add a nice starry
             sky -->
@@ -128,6 +131,10 @@
       <!--<a-entity id="asteroid-belt" gltf-model="#asteroids" scale="2.1 2.1 2.1" position="0 0 0"></a-entity>-->
 
       <!-- adding kooky/shooky test-->
+      
+      <a-sphere id="mars" position="0 0 12.5" radius=".4" src="#mars-texture">
+      <a-animation attribute="rotation" from="0 5 0" to="0 360 0" dur="15000" repeat="indefinite" easing="linear"></a-animation>
+      </a-sphere>
 
       <a-entity
         id="koya-appear"
@@ -135,7 +142,10 @@
         scale="5 5 5"
         position="0 0.22783 -0.79567"
         rotation="0 -17.26780202965275 0"
-      ></a-entity>
+        animation="property: rotation; to: 0  368 0; dur: 10600; loop: true;easing: linear;"
+      >
+      <a-animation attribute="rotation" from="00 -17.26780202965275 0" to="0 0 0" dur="1000" repeat="indefinite" easing="linear"></a-animation>
+      </a-entity>
       <a-entity
         id="kooky-appear"
         gltf-model="https://cdn.glitch.com/32c3653d-8420-4d48-8ab6-f43f46799a4a%2Fkooky.glb?v=1585219182802"
