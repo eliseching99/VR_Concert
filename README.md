@@ -135,3 +135,6 @@ Check out the next starter project in the series 💞[starter-aframe-animation](
 * [Asteroid texture](https://commons.wikimedia.org/wiki/File:Generic_Celestia_asteroid_texture.jpg)
 * [Extra asteroids model](https://poly.google.com/view/9k18F9bT43N)
 * [Space Shuttle model](https://poly.google.com/view/djxolbz_CYC)
+* [BT21 Koya Model](https://poly.google.com/view/24J9P37Ldjz)
+* [BT21 Koya Model](https://poly.google.com/view/5ULLUuTrK5y)
+* [BT21 SHooky Model](https://poly.google.com/view/8bmzu4Y6gvY)
