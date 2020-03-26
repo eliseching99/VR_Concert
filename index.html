@@ -1,0 +1,215 @@
+<html>
+  <head>
+    <title>A-Frame Starter Kit - Mini Fancy Planetarium</title>
+    <meta
+      name="description"
+      content="Build your own planetarium with A-frame"
+    />
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+
+    <!-- let's extend A-Frame with a star system component so we can get a
+        starry background -->
+    <!-- <script src="https://unpkg.com/aframe-star-system-component@1.0.0/index.js"></script> -->
+    <script src="https://unpkg.com/aframe-star-system-component@1.0.0/index.js"></script>
+  </head>
+
+  <body>
+    <a-scene>
+      <!-- our assets section is where we organize images, audio, and
+            other files we want to include in our scene. They can be referenced
+            later by their ID -->
+      <a-assets>
+        <!-- Concert by Poly by Google -->
+
+        <img
+          id="sun-texture"
+          src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2F1024px-Map_of_the_full_sun.jpg?1540859304920"
+          crossorigin="anonymous"
+        />
+        <img
+          id="mercury-texture"
+          src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2Fmercurymap.jpg?1541102122291"
+          crossorigin="anonymous"
+        />
+        <img
+          id="venus-texture"
+          src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2Fvenusmap.jpg?1541102155907"
+          crossorigin="anonymous"
+        />
+        <img
+          id="earth-texture"
+          src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2Fearthmap1k.jpg?1541102064615"
+          crossorigin="anonymous"
+        />
+        <img
+          id="mars-texture"
+          src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2Fmars_1k_color.jpg?1541102234577"
+          crossorigin="anonymous"
+        />
+        <img
+          id="jupiter-texture"
+          src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2Fjupitermap.jpg?1541101634813"
+          crossorigin="anonymous"
+        />
+        <img
+          id="saturn-texture"
+          src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2Fsaturnmap.jpg?1541102148468"
+          crossorigin="anonymous"
+        />
+        <img
+          id="uranus-texture"
+          src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2Furanusmap.jpg?1541102150185"
+          crossorigin="anonymous"
+        />
+        <img
+          id="neptune-texture"
+          src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2Fneptunemap.jpg?1541102137305"
+          crossorigin="anonymous"
+        />
+        <img
+          id="pluto-texture"
+          src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2Fplutomap1k.jpg?1541102145905"
+          crossorigin="anonymous"
+        />
+        <img
+          id="moon-texture"
+          src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2FMoonmap_from_clementine_data.png?1541102132708"
+          crossorigin="anonymous"
+        />
+        <a-asset-item
+          id="asteroids"
+          response-type="arraybuffer"
+          src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2Fasteroides.glb?1541106805090"
+        ></a-asset-item>
+        <a-asset-item
+          id="kooky"
+          response-type="arraybuffer"
+          src="https://cdn.glitch.com/32c3653d-8420-4d48-8ab6-f43f46799a4a%2Fkooky.glb?v=1585219182802"
+        ></a-asset-item>
+        <a-asset-item
+          id="shooky"
+          response-type="arraybuffer"
+          src="https://cdn.glitch.com/32c3653d-8420-4d48-8ab6-f43f46799a4a%2Fshooky.glb?v=1585220640714"
+        ></a-asset-item>
+        <a-asset-item
+          id="koya"
+          response-type="arraybuffer"
+          src="https://cdn.glitch.com/32c3653d-8420-4d48-8ab6-f43f46799a4a%2Fkoya.glb?v=1585226549039"
+        ></a-asset-item>
+        <a-asset-item
+          id="stadium"
+          response-type="arraybuffer"
+          src="https://cdn.glitch.com/32c3653d-8420-4d48-8ab6-f43f46799a4a%2Fconcetglb.glb?v=1585226082875"
+        ></a-asset-item>
+        <a-asset-item
+          id="concert"
+          response-type="arraybuffer"
+          src="https://cdn.glitch.com/32c3653d-8420-4d48-8ab6-f43f46799a4a%2FJDCOLOR.glb?v=1585227953211"
+        ></a-asset-item>
+      </a-assets>
+
+      <!-- Let's start using a custom camera so we can put the sun in the
+            middle and still see it-->
+      <a-entity position="-5 5 20" rotation="-13 0 0">
+        <a-entity camera look-controls wasd-controls></a-entity>
+      </a-entity>
+
+      <a-sky color="#F3ECE7"></a-sky>
+
+      <!-- We can use our star system component here to add a nice starry
+            sky -->
+      <!--<a-entity star-system="count: 1000; radius: 250; depth: 0"></a-entity>-->
+
+      <!-- The sun is now our 'origin' which makes things a lot easier -->
+      <!--<a-sphere id="sun" position="0 0 0" radius="4" color="#F5C85D" src="#sun-texture"></a-sphere>-->
+
+      <!-- We'll add an asteroid belt using a gltf model, see the Readme
+            for more info about how to use these -->
+      <!--<a-entity id="asteroid-belt" gltf-model="#asteroids" scale="2.1 2.1 2.1" position="0 0 0"></a-entity>-->
+
+      <!-- adding kooky/shooky test-->
+
+      <a-entity
+        id="koya-appear"
+        gltf-model="https://cdn.glitch.com/32c3653d-8420-4d48-8ab6-f43f46799a4a%2Fkoya.glb?v=1585226549039"
+        scale="5 5 5"
+        position="0 0.22783 -0.79567"
+        rotation="0 -17.26780202965275 0"
+      ></a-entity>
+      <a-entity
+        id="kooky-appear"
+        gltf-model="https://cdn.glitch.com/32c3653d-8420-4d48-8ab6-f43f46799a4a%2Fkooky.glb?v=1585219182802"
+        scale="5 5 5"
+        position="-0.96403 2.5425 -0.20331"
+        rotation="0 260 0"
+      ></a-entity>
+      <a-entity
+        id="shooky-appear"
+        gltf-model="https://cdn.glitch.com/32c3653d-8420-4d48-8ab6-f43f46799a4a%2Fshooky.glb?v=1585220640714"
+        scale="5 5 5"
+        position="1.02084 -3.25892 0.09745"
+        rotation="0 119.99999999999999 0"
+      ></a-entity>
+      <a-entity
+        id="stadium-appear"
+        gltf-model="#stadium"
+        scale="5 5 5"
+        position="0 1 0"
+      ></a-entity>
+      <a-entity
+        id="concert-appear"
+        gltf-model="#concert"
+        scale="5 5 5"
+        position="0 1 0"
+      ></a-entity>
+
+      <!-- we use the textures defined in assets to make our planets more
+            realistic-->
+      <!--
+            <a-sphere id="mercury" position="0 0 6" radius=".4" src="#mercury-texture"></a-sphere>
+            <a-sphere id="venus" position="0 0 8.5" radius=".4" src="#venus-texture"></a-sphere>
+            <a-sphere id="mars" position="0 0 12.5" radius=".4" src="#mars-texture"></a-sphere>
+            <a-sphere id="jupiter" position="0 0 24" radius="2.5" src="#jupiter-texture"></a-sphere>
+            <a-sphere id="pluto" position="0 0 46" radius=".4" src="#pluto-texture"></a-sphere>
+
+
+            <a-entity id="earth-and-moon" position="0 0 10.5">
+                <a-sphere position="0 0 0" radius=".5" color="#6DCBE7" id="earth" src="#earth-texture"> </a-sphere>
+                <a-sphere position="-1 0 0" radius=".10" color="#DBE0DE" id="moon" src="#moon-texture"></a-sphere>
+            </a-entity>
+            
+            <!-- our Torii (the plural of toris) are now using the
+            entity-component system. See the Readme to learn more about it! -->
+      <!--
+            <a-entity id="saturn-container" position="0 0 31">
+                <a-sphere radius="1.8" id="saturn" src="#saturn-texture"></a-sphere>
+                <a-entity id="saturn-ring-1" geometry="primitive: torus; radius: 3.2; radiusTubular: 0.1;segmentsTubular: 50"
+                    material="color: #57524A;" rotation="90 0 0" scale="1 1 0.1"></a-entity>
+                <a-entity id="saturn-ring-2" geometry="primitive: torus; radius: 2.4; radiusTubular: 0.2;segmentsTubular: 50"
+                    material="color: #A29A87;" rotation="90 0 0" scale="1 1 0.1"></a-entity>
+            </a-entity>
+
+            <a-entity id="uranus-container" position="0 0 36">
+                <a-sphere id="uranus" radius=".75" src="#uranus-texture"></a-sphere>
+                <a-entity id="uranus-ring" geometry="primitive: torus; radius: 1.5; radiusTubular: 0.01;segmentsTubular: 50"
+                    material="color: #FFFFFF;" rotation="-10 90 0" scale="1 1 0.1"></a-entity>
+            </a-entity>
+
+            <a-entity id="neptune-container" position="0 0 40">
+                <a-sphere id="neptune" radius="1" src="#neptune-texture"></a-sphere>
+                <a-entity id="neptune-ring-1" geometry="primitive: torus; radius: 2; radiusTubular: 0.01;segmentsTubular: 50"
+                    material="color: #FFFFFF;opacity: 0.8" rotation="90 0 0" scale="1 1 0.1"></a-entity>
+                <a-entity id="neptune-ring-2" geometry="primitive: torus; radius: 1.7; radiusTubular: 0.05;segmentsTubular: 50"
+                    material="color: #FFFFFF;opacity: 0.8" rotation="90 0 0" scale="1 1 0.1"></a-entity>
+                <a-entity id="neptune-ring-3" geometry="primitive: torus; radius: 1.3; radiusTubular: 0.01;segmentsTubular: 50"
+                    material="color: #FFFFFF;opacity: 0.8" rotation="90 0 0" scale="1 1 0.1"></a-entity>
+            </a-entity>
+            -->
+    </a-scene>
+
+    <!-- include the Glitch button to show what the webpage is about and
+          to make it easier for folks to view source and remix -->
+    <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
+    <script src="https://button.glitch.me/button.js"></script>
+  </body>
+</html>
