@@ -1,9 +1,9 @@
 <html>
   <head>
-    <title>A-Frame Starter Kit - Mini Fancy Planetarium</title>
+    <title>VR BTS Concert</title>
     <meta
       name="description"
-      content="Build your own planetarium with A-frame"
+      content="Prototype of futuristic concert ideas"
     />
     <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
 
@@ -22,67 +22,6 @@
             later by their ID -->
       <a-assets>
         <!-- Concert by Poly by Google -->
-
-        <img
-          id="sun-texture"
-          src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2F1024px-Map_of_the_full_sun.jpg?1540859304920"
-          crossorigin="anonymous"
-        />
-        <img
-          id="mercury-texture"
-          src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2Fmercurymap.jpg?1541102122291"
-          crossorigin="anonymous"
-        />
-        <img
-          id="venus-texture"
-          src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2Fvenusmap.jpg?1541102155907"
-          crossorigin="anonymous"
-        />
-        <img
-          id="earth-texture"
-          src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2Fearthmap1k.jpg?1541102064615"
-          crossorigin="anonymous"
-        />
-        <img
-          id="mars-texture"
-          src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2Fmars_1k_color.jpg?1541102234577"
-          crossorigin="anonymous"
-        />
-        <img
-          id="jupiter-texture"
-          src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2Fjupitermap.jpg?1541101634813"
-          crossorigin="anonymous"
-        />
-        <img
-          id="saturn-texture"
-          src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2Fsaturnmap.jpg?1541102148468"
-          crossorigin="anonymous"
-        />
-        <img
-          id="uranus-texture"
-          src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2Furanusmap.jpg?1541102150185"
-          crossorigin="anonymous"
-        />
-        <img
-          id="neptune-texture"
-          src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2Fneptunemap.jpg?1541102137305"
-          crossorigin="anonymous"
-        />
-        <img
-          id="pluto-texture"
-          src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2Fplutomap1k.jpg?1541102145905"
-          crossorigin="anonymous"
-        />
-        <img
-          id="moon-texture"
-          src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2FMoonmap_from_clementine_data.png?1541102132708"
-          crossorigin="anonymous"
-        />
-        <a-asset-item
-          id="asteroids"
-          response-type="arraybuffer"
-          src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2Fasteroides.glb?1541106805090"
-        ></a-asset-item>
         <a-asset-item
           id="kooky"
           response-type="arraybuffer"
@@ -132,19 +71,16 @@
 
       <!-- adding kooky/shooky test-->
       
-      <a-sphere id="mars" position="0 0 12.5" radius=".4" src="#mars-texture">
-      <a-animation attribute="rotation" from="0 5 0" to="0 360 0" dur="15000" repeat="indefinite" easing="linear"></a-animation>
-      </a-sphere>
+   
 
       <a-entity
         id="koya-appear"
         gltf-model="https://cdn.glitch.com/32c3653d-8420-4d48-8ab6-f43f46799a4a%2Fkoya.glb?v=1585226549039"
         scale="5 5 5"
-        position="0 0.22783 -0.79567"
+        position="0 0.22783 -0.79567 "
         rotation="0 -17.26780202965275 0"
-        animation="property: rotation; to: 0  368 0; dur: 10600; loop: true;easing: linear;"
       >
-      <a-animation attribute="rotation" from="00 -17.26780202965275 0" to="0 0 0" dur="1000" repeat="indefinite" easing="linear"></a-animation>
+      <a-animation attribute="rotation" direction="alternate" from="00 -45.26780202965275 0" to="0 0 0" dur="1000" repeat="indefinite" easing="linear"></a-animation>
       </a-entity>
       <a-entity
         id="kooky-appear"
@@ -152,7 +88,10 @@
         scale="5 5 5"
         position="-0.96403 2.5425 -0.20331"
         rotation="0 260 0"
-      ></a-entity>
+      >
+      <a-animation attribute="position" direction="alternate" from="-0.96403 2.5425 -0.20331" to="-0.96403 3 -0.20331" dur="1000" repeat="indefinite" easing="linear"></a-animation>
+
+      </a-entity>
       <a-entity
         id="shooky-appear"
         gltf-model="https://cdn.glitch.com/32c3653d-8420-4d48-8ab6-f43f46799a4a%2Fshooky.glb?v=1585220640714"
@@ -215,6 +154,12 @@
                     material="color: #FFFFFF;opacity: 0.8" rotation="90 0 0" scale="1 1 0.1"></a-entity>
             </a-entity>
             -->
+      <a-light position="1.4 3.6 -5" type="point" intensity="0.1" color="#00E6FF"></a-light>
+
+      <a-light type="ambient" intensity="0.1" color="#00E6FF"></a-light>
+      <a-light type="ambient" intensity=".1" color="#FF54CA"></a-light>
+
+    
     </a-scene>
 
     <!-- include the Glitch button to show what the webpage is about and
