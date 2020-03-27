@@ -17,6 +17,7 @@
 
   <body>
     <a-scene>
+      <a-mixin id="disco" animation="property:intensity;  loop: true;from:0.9  to:0.5; dur: 20000; easing: linear;"></a-mixin>
       <!-- our assets section is where we organize images, audio, and
             other files we want to include in our scene. They can be referenced
             later by their ID -->
@@ -37,15 +38,12 @@
           response-type="arraybuffer"
           src="https://cdn.glitch.com/32c3653d-8420-4d48-8ab6-f43f46799a4a%2Fkoya.glb?v=1585226549039"
         ></a-asset-item>
-        <a-asset-item
-          id="stadium"
-          response-type="arraybuffer"
-          src="https://cdn.glitch.com/32c3653d-8420-4d48-8ab6-f43f46799a4a%2Fconcetglb.glb?v=1585226082875"
-        ></a-asset-item>
+       
         <a-asset-item
           id="concert"
           response-type="arraybuffer"
           src="https://cdn.glitch.com/32c3653d-8420-4d48-8ab6-f43f46799a4a%2FJDCOLOR.glb?v=1585227953211"
+          
         ></a-asset-item>
       </a-assets>
 
@@ -88,8 +86,13 @@
         scale="5 5 5"
         position="-0.96403 2.5425 -0.20331"
         rotation="0 260 0"
+        light="type:ambient"
+                
       >
       <a-animation attribute="position" direction="alternate" from="-0.96403 2.5425 -0.20331" to="-0.96403 3 -0.20331" dur="1000" repeat="indefinite" easing="linear"></a-animation>
+      <a-animation attribute="light.color" direction="alternate" from="#CFF0CC" to="#DFA995" dur="1000" repeat="indefinite" easing="linear"></a-animation>
+      <a-animation attribute="light.intensity" direction="alternate" from="0.1" to="0.3" dur="1000" repeat="indefinite" easing="linear" delay="5"></a-animation>
+
 
       </a-entity>
       <a-entity
@@ -99,65 +102,26 @@
         position="1.02084 -3.25892 0.09745"
         rotation="0 119.99999999999999 0"
       ></a-entity>
-      <a-entity
-        id="stadium-appear"
-        gltf-model="#stadium"
-        scale="5 5 5"
-        position="0 1 0"
-      ></a-entity>
+    
       <a-entity
         id="concert-appear"
         gltf-model="#concert"
         scale="5 5 5"
         position="0 1 0"
-      ></a-entity>
-
-      <!-- we use the textures defined in assets to make our planets more
-            realistic-->
-      <!--
-            <a-sphere id="mercury" position="0 0 6" radius=".4" src="#mercury-texture"></a-sphere>
-            <a-sphere id="venus" position="0 0 8.5" radius=".4" src="#venus-texture"></a-sphere>
-            <a-sphere id="mars" position="0 0 12.5" radius=".4" src="#mars-texture"></a-sphere>
-            <a-sphere id="jupiter" position="0 0 24" radius="2.5" src="#jupiter-texture"></a-sphere>
-            <a-sphere id="pluto" position="0 0 46" radius=".4" src="#pluto-texture"></a-sphere>
+        light="type: ambient"
+                
+        >
+        <a-animation attribute="light.intensity" direction="alternate" from="0" to="0.9" dur="1000" repeat="indefinite" easing="linear" delay="5"></a-animation>
+        <a-animation attribute="light.color" direction="alternate" from="#E9CFEC" to="#6A287E" dur="1000" repeat="indefinite" easing="linear"></a-animation>
 
 
-            <a-entity id="earth-and-moon" position="0 0 10.5">
-                <a-sphere position="0 0 0" radius=".5" color="#6DCBE7" id="earth" src="#earth-texture"> </a-sphere>
-                <a-sphere position="-1 0 0" radius=".10" color="#DBE0DE" id="moon" src="#moon-texture"></a-sphere>
-            </a-entity>
-            
-            <!-- our Torii (the plural of toris) are now using the
-            entity-component system. See the Readme to learn more about it! -->
-      <!--
-            <a-entity id="saturn-container" position="0 0 31">
-                <a-sphere radius="1.8" id="saturn" src="#saturn-texture"></a-sphere>
-                <a-entity id="saturn-ring-1" geometry="primitive: torus; radius: 3.2; radiusTubular: 0.1;segmentsTubular: 50"
-                    material="color: #57524A;" rotation="90 0 0" scale="1 1 0.1"></a-entity>
-                <a-entity id="saturn-ring-2" geometry="primitive: torus; radius: 2.4; radiusTubular: 0.2;segmentsTubular: 50"
-                    material="color: #A29A87;" rotation="90 0 0" scale="1 1 0.1"></a-entity>
-            </a-entity>
 
-            <a-entity id="uranus-container" position="0 0 36">
-                <a-sphere id="uranus" radius=".75" src="#uranus-texture"></a-sphere>
-                <a-entity id="uranus-ring" geometry="primitive: torus; radius: 1.5; radiusTubular: 0.01;segmentsTubular: 50"
-                    material="color: #FFFFFF;" rotation="-10 90 0" scale="1 1 0.1"></a-entity>
-            </a-entity>
+      </a-entity>
 
-            <a-entity id="neptune-container" position="0 0 40">
-                <a-sphere id="neptune" radius="1" src="#neptune-texture"></a-sphere>
-                <a-entity id="neptune-ring-1" geometry="primitive: torus; radius: 2; radiusTubular: 0.01;segmentsTubular: 50"
-                    material="color: #FFFFFF;opacity: 0.8" rotation="90 0 0" scale="1 1 0.1"></a-entity>
-                <a-entity id="neptune-ring-2" geometry="primitive: torus; radius: 1.7; radiusTubular: 0.05;segmentsTubular: 50"
-                    material="color: #FFFFFF;opacity: 0.8" rotation="90 0 0" scale="1 1 0.1"></a-entity>
-                <a-entity id="neptune-ring-3" geometry="primitive: torus; radius: 1.3; radiusTubular: 0.01;segmentsTubular: 50"
-                    material="color: #FFFFFF;opacity: 0.8" rotation="90 0 0" scale="1 1 0.1"></a-entity>
-            </a-entity>
-            -->
-      <a-light position="1.4 3.6 -5" type="point" intensity="0.1" color="#00E6FF"></a-light>
 
-      <a-light type="ambient" intensity="0.1" color="#00E6FF"></a-light>
-      <a-light type="ambient" intensity=".1" color="#FF54CA"></a-light>
+      <a-light type="ambient" intensity="0.6" color="#00E6FF"></a-light>
+      <a-light type="ambient" intensity=".6" color="#FF54CA"></a-light>
+      
 
     
     </a-scene>
